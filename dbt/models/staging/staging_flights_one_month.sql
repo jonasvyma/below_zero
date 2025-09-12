@@ -1,8 +1,7 @@
-{{ config(materialized='view') }}
 
-WITH flights_one_month AS (
+WITH flights AS (
     SELECT * 
     FROM {{source('flights_data', 'flights')}}
-    WHERE DATE_PART('month', flight_date) = 1 
 )
-SELECT * FROM flights_one_month
+SELECT * FROM flights
+WHERE origin in ('MSY', 'MOB', 'MIA') OR dest in ('MSY', 'MOB', 'MIA')
