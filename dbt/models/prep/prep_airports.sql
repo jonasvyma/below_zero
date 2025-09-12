@@ -1,6 +1,5 @@
 with airports_reorder as (
 select
-	region,
 	country,
 	faa,
 	name,
